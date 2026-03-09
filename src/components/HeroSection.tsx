@@ -1,5 +1,5 @@
 import React from 'react';
-const heroImage = "";
+import heroImage from 'figma:asset/e2a828e6413fb8cdd47b8d792cc96b1ffc5458d9.png';
 
 export function HeroSection() {
   return (
