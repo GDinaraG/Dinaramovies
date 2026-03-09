@@ -29,7 +29,7 @@ export function ImageCarousel({ images }: ImageCarouselProps) {
       {/* Main Image */}
       <div className="relative overflow-hidden rounded-lg">
 <img 
-  src={images[currentIndex] || ''} 
+  src={images[currentIndex]}
   alt={`Slide ${currentIndex + 1}`}
   className="w-full h-auto rounded-lg"
 />
