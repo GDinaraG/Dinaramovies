@@ -4,8 +4,8 @@
   import path from 'path';
 
 export default defineConfig({
-base: '/Dinaramovies'
-  plugins: [react()],
+base: '/Dinaramovies',
+plugins: [react()],
     resolve: {
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
       alias: {
