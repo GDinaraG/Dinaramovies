@@ -28,11 +28,11 @@ export function ImageCarousel({ images }: ImageCarouselProps) {
     <div className="relative w-full">
       {/* Main Image */}
       <div className="relative overflow-hidden rounded-lg">
-        <img 
-          src={images[currentIndex]} 
-          alt={`Slide ${currentIndex + 1}`}
-          className="w-full h-auto rounded-lg"
-        />
+<img 
+  src={images[currentIndex] || ''} 
+  alt={`Slide ${currentIndex + 1}`}
+  className="w-full h-auto rounded-lg"
+/>
         
         {/* Navigation Arrows */}
         <button
