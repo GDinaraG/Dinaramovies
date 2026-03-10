@@ -43,7 +43,7 @@ export function Header() {
             <div className="flex items-center gap-2">
               <span className="text-green-400 tracking-wide underline decoration-green-400/50 decoration-1 underline-offset-4">DINARA ENGLISH</span>
               <span className="text-[#ffd700]">•</span>
-              <span className="text-[#ffd700]">MOVIES</span>
+              <span className="text-[#ffd700]">ФИЛЬМЫ</span>
             </div>
             <div className="flex items-center gap-1.5 mt-0.5">
               <span className="text-white group-hover:opacity-80 transition-opacity" style={{ fontFamily: "'Caveat', cursive" }}>
