@@ -132,7 +132,7 @@ export function PricingSection() {
                   <span className="text-xl text-gray-400">₽</span>
                 </div>
               </div>
-              <p className="text-sm text-gray-400 mt-2">за весь курс</p>
+              <p className="text-sm text-gray-400 mt-2">за курс</p>
             </div>
             
             <ul className="space-y-3">
