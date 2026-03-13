@@ -57,7 +57,7 @@ export function ContactSection() {
             </div>
             
             <h3 className="mb-4">Макс</h3>
-            <p className="text-gray-300">
+            <p className="text-gray-300 mb-6">
               Можно написать напрямую здесь
             </p>
             <a
