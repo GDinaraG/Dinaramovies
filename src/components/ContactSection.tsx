@@ -56,9 +56,9 @@ export function ContactSection() {
               <Sparkles size={32} className="text-[#ffd700]" />
             </div>
             
-            <h3 className="mb-4">Макс</h3>
+            <h3 className="mb-4">Max</h3>
             <p className="text-gray-300 mb-6">
-              Можно написать напрямую здесь
+              Напишите сообщение, отвечу на любые вопросы
             </p>
             <a
   href="https://max.ru/u/f9LHodD0cOLhbGCH7SAovsVCzNCspvleqRZ9MPJCpqZjgELEYNfkRENbaXw"
