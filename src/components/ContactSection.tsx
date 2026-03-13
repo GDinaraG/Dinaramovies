@@ -14,7 +14,7 @@ export function ContactSection() {
               <Send size={32} className="text-[#ff6b9d]" />
             </div>
             
-            <h3 className="mb-4">Telegram</h3>
+            <h3 className="mb-4">Телеграм</h3>
             <p className="text-gray-300 mb-6">
               Быстрый способ связаться и обсудить детали
             </p>
@@ -56,7 +56,7 @@ export function ContactSection() {
               <Sparkles size={32} className="text-[#ffd700]" />
             </div>
             
-            <h3 className="mb-4">Max</h3>
+            <h3 className="mb-4">Макс</h3>
             <p className="text-gray-300 mb-6">
               Напишите сообщение, отвечу на любые вопросы
             </p>
