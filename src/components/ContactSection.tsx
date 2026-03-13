@@ -56,10 +56,18 @@ export function ContactSection() {
               <Sparkles size={32} className="text-[#ffd700]" />
             </div>
             
-            <h3 className="mb-4">Мини-диагностика</h3>
+            <h3 className="mb-4">Макс</h3>
             <p className="text-gray-300">
-              После первого сообщения определим ваши интересы и подберём подходящий формат.
+              Можно написать напрямую здесь
             </p>
+            <a
+  href="https://max.ru/u/f9LHodD0cOLhbGCH7SAovsVCzNCspvleqRZ9MPJCpqZjgELEYNfkRENbaXw"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-block px-6 py-3 rounded-full bg-gradient-to-r from-[#ffd700] to-[#ffb800] text-black hover:shadow-lg hover:shadow-yellow-500/50 transition-all duration-300"
+>
+  Написать
+</a>
           </div>
         </div>
       </div>
