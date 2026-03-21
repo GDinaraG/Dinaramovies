@@ -65,6 +65,7 @@ export function ContactSection() {
               href="https://max.ru/u/f9LHodD0cOLhbGCH7SAovsVCzNCspvleqRZ9MPJCpqZjgELEYNfkRENbaXw"
               target="_blank"
               rel="noopener noreferrer"
+              style={{ background: 'red' }}
               className="inline-block px-6 py-3 rounded-full bg-gradient-to-r from-[#a855f7] to-[#c084fc] text-white hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300"
             >
               Написать
