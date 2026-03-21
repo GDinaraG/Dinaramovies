@@ -50,24 +50,22 @@ export function ContactSection() {
             </a>
           </div>
 
-          {/* Diagnostic */}
-          <div className="bg-gradient-to-br from-[#2a3557]/50 to-[#1f2740]/50 rounded-2xl p-8 backdrop-blur-sm border border-white/10 text-center">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-[#ffd700]/20 to-[#ffed4e]/10 border border-[#ffd700]/30 mb-6">
-              <Sparkles size={32} className="text-[#ffd700]" />
+          {/* Max Messenger */}
+          <div className="bg-gradient-to-br from-[#1a2347]/60 to-[#0f1629]/60 rounded-2xl p-8 backdrop-blur-sm border border-white/10 hover:border-purple-500/30 transition-all duration-300 text-center">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-purple-500/20 to-purple-400/10 border border-purple-500/30 mb-6">
+              <MessageSquare size={32} className="text-purple-400" />
             </div>
             
             <h3 className="mb-4">Макс</h3>
             <p className="text-gray-300 mb-6">
               Напишите сообщение, отвечу на любые вопросы
             </p>
-            <a
-  href="https://max.ru/u/f9LHodD0cOLhbGCH7SAovsVCzNCspvleqRZ9MPJCpqZjgELEYNfkRENbaXw"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="inline-block px-6 py-3 rounded-full bg-[#ffd700] text-black hover:bg-[#ffcc00] transition-all duration-300"
->
-  Написать
-</a>
+            
+            <button
+              className="inline-block px-6 py-3 rounded-full bg-gradient-to-r from-purple-500 to-purple-600 hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300"
+            >
+              Написать
+            </button>
           </div>
         </div>
       </div>
