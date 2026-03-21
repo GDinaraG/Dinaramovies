@@ -1,5 +1,5 @@
 import React from 'react';
-import { Send, MessageCircle, Sparkles } from 'lucide-react';
+import { Send, MessageCircle, MessageSquare } from 'lucide-react';
 
 export function ContactSection() {
   return (
