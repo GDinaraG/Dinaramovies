@@ -65,11 +65,8 @@ export function ContactSection() {
               href="https://max.ru/u/f9LHodD0cOLhbGCH7SAovsVCzNCspvleqRZ9MPJCpqZjgELEYNfkRENbaXw"
               target="_blank"
               rel="noopener noreferrer"             
-               style={{
-    backgroundColor: '#a855f7',
-    boxShadow: '0 10px 30px rgba(168, 85, 247, 0.4)'
-  }}
-  className="inline-block px-6 py-3 rounded-full text-white hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300"
+                 style={{ backgroundColor: '#a855f7' }}
+  className="inline-block px-6 py-3 rounded-full text-white transition-all duration-300 hover:shadow-[0_10px_30px_rgba(168,85,247,0.4)]"
             >
               Написать
             </a>
