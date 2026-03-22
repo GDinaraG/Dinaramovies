@@ -153,7 +153,7 @@ export function CatalogSection() {
       selfStudyAvailable: true
     },
     {
-      level: 'A2–B1',
+      level: 'B1–B2',
       format: 'Фильм',
       title: 'Wednesday 2',
       titleRu: 'Уэнсдей 2',
