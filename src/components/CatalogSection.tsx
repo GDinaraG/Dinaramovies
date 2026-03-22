@@ -235,7 +235,7 @@ export function CatalogSection() {
       format: 'Сериал',
       title: 'Breaking Bad',
       titleRu: 'Во все тяжкие',
-      description: 'История превращения учителя химии в наркобарона',
+      description: 'История превращения учителя химии в преступника',
       lessons: 16,
       genres: ['Драма', 'Триллер', 'Криминал'],
       poster: breakingBadPoster,
