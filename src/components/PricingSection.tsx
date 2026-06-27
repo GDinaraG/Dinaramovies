@@ -12,7 +12,7 @@ export function PricingSection() {
           <div className="bg-gradient-to-br from-[#1a2347]/60 to-[#0f1629]/60 rounded-2xl p-8 backdrop-blur-sm border border-white/10 hover:border-[#ffd700]/30 transition-all duration-300 relative overflow-hidden">
             {/* Discount Badge */}
             <div className="absolute top-4 right-4 bg-gradient-to-r from-red-500 to-red-600 text-white text-xs px-3 py-1 rounded-full shadow-lg">
-              -27%
+              -20%
             </div>
             
             <div className="flex items-center gap-2 mb-4">
@@ -63,7 +63,7 @@ export function PricingSection() {
           <div className="bg-gradient-to-br from-[#2a3557]/50 to-[#1f2740]/50 rounded-2xl p-8 backdrop-blur-sm border border-white/10 hover:border-[#ff6b9d]/30 transition-all duration-300 relative overflow-hidden">
             {/* Discount Badge */}
             <div className="absolute top-4 right-4 bg-gradient-to-r from-red-500 to-red-600 text-white text-xs px-3 py-1 rounded-full shadow-lg">
-              -25%
+              -20%
             </div>
             
             <div className="flex items-center gap-2 mb-4">
