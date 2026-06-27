@@ -154,7 +154,7 @@ export function CatalogSection() {
     },
     {
       level: 'B1–B2',
-      format: 'Фильм',
+      format: 'Сериал',
       title: 'Wednesday 2',
       titleRu: 'Уэнсдей 2',
       description: 'Новые приключения Уэнсдей Аддамс',
