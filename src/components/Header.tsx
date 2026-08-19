@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { ArrowUpRight, ChevronLeft, Heart, MessageCircle, MessageSquare, Send, X } from 'lucide-react';
 
 export function Header() {
@@ -80,7 +81,7 @@ export function Header() {
         </div>
       </div>
 
-      {bookingOpen && (
+      {bookingOpen && createPortal(
         <div
           className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center p-6 overflow-y-auto"
           style={{ zIndex: 80 }}
@@ -168,7 +169,8 @@ export function Header() {
               </button>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </header>
   );
