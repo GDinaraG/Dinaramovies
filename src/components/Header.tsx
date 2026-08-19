@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { ArrowUpRight, ChevronLeft, Heart, Menu, MessageCircle, MessageSquare, Send, X } from 'lucide-react';
 
@@ -6,6 +6,8 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [bookingOpen, setBookingOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileMenuPosition, setMobileMenuPosition] = useState({ top: 72, right: 16 });
+  const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,6 +16,25 @@ export function Header() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+
+    const positionMenu = () => {
+      const button = mobileMenuButtonRef.current;
+      if (!button) return;
+
+      const rect = button.getBoundingClientRect();
+      setMobileMenuPosition({
+        top: rect.bottom + 8,
+        right: Math.max(12, window.innerWidth - rect.right)
+      });
+    };
+
+    positionMenu();
+    window.addEventListener('resize', positionMenu);
+    return () => window.removeEventListener('resize', positionMenu);
+  }, [mobileMenuOpen]);
 
   const scrollToSection = (id: string) => {
     setMobileMenuOpen(false);
@@ -82,6 +103,7 @@ export function Header() {
           </button>
 
           <button
+            ref={mobileMenuButtonRef}
             type="button"
             onClick={() => setMobileMenuOpen((open) => !open)}
             className="lg:hidden inline-flex h-11 flex-shrink-0 items-center justify-center gap-2 rounded-full border border-[#ff8fab] bg-gradient-to-r from-[#ff5f98] to-[#ff82aa] px-4 text-sm font-semibold text-white shadow-lg shadow-pink-500/30"
@@ -98,20 +120,20 @@ export function Header() {
           <nav
             className="fixed z-50 overflow-hidden rounded-2xl border border-white/15 p-3 shadow-2xl lg:hidden"
             style={{
-              top: '72px',
-              right: '16px',
+              top: `${mobileMenuPosition.top}px`,
+              right: `${mobileMenuPosition.right}px`,
               width: 'min(240px, calc(100vw - 32px))',
               color: '#f8fafc',
-              backgroundColor: 'rgba(15, 22, 50, 0.72)',
-              backdropFilter: 'blur(20px) saturate(130%)',
-              WebkitBackdropFilter: 'blur(20px) saturate(130%)',
+              backgroundColor: 'rgba(15, 22, 50, 0.42)',
+              backdropFilter: 'blur(24px) saturate(145%)',
+              WebkitBackdropFilter: 'blur(24px) saturate(145%)',
               isolation: 'isolate'
             }}
           >
-            <button onClick={() => scrollToSection('format')} className="block w-full rounded-xl px-4 py-3 hover:bg-white/10" style={{ color: '#f8fafc', textAlign: 'left' }}>О формате</button>
-            <button onClick={() => scrollToSection('about')} className="block w-full rounded-xl px-4 py-3 hover:bg-white/10" style={{ color: '#f8fafc', textAlign: 'left' }}>Обо мне</button>
-            <button onClick={() => scrollToSection('catalog')} className="block w-full rounded-xl px-4 py-3 hover:bg-white/10" style={{ color: '#f8fafc', textAlign: 'left' }}>Фильмы</button>
-            <button onClick={() => scrollToSection('pricing')} className="block w-full rounded-xl px-4 py-3 hover:bg-white/10" style={{ color: '#f8fafc', textAlign: 'left' }}>Стоимость</button>
+            <button onClick={() => scrollToSection('format')} className="block w-full rounded-xl px-4 py-3 hover:bg-white/10" style={{ color: '#f8fafc', textAlign: 'center' }}>О формате</button>
+            <button onClick={() => scrollToSection('about')} className="block w-full rounded-xl px-4 py-3 hover:bg-white/10" style={{ color: '#f8fafc', textAlign: 'center' }}>Обо мне</button>
+            <button onClick={() => scrollToSection('catalog')} className="block w-full rounded-xl px-4 py-3 hover:bg-white/10" style={{ color: '#f8fafc', textAlign: 'center' }}>Фильмы</button>
+            <button onClick={() => scrollToSection('pricing')} className="block w-full rounded-xl px-4 py-3 hover:bg-white/10" style={{ color: '#f8fafc', textAlign: 'center' }}>Стоимость</button>
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
