@@ -135,10 +135,10 @@ export function Header() {
               isolation: 'isolate'
             }}
           >
-            <button onClick={() => scrollToSection('format')} className="block w-full rounded-xl px-3 py-2.5 hover:bg-white/10" style={{ color: '#f8fafc', textAlign: 'center' }}>О формате</button>
-            <button onClick={() => scrollToSection('about')} className="block w-full rounded-xl px-3 py-2.5 hover:bg-white/10" style={{ color: '#f8fafc', textAlign: 'center' }}>Обо мне</button>
-            <button onClick={() => scrollToSection('catalog')} className="block w-full rounded-xl px-3 py-2.5 hover:bg-white/10" style={{ color: '#f8fafc', textAlign: 'center' }}>Фильмы</button>
-            <button onClick={() => scrollToSection('pricing')} className="block w-full rounded-xl px-3 py-2.5 hover:bg-white/10" style={{ color: '#f8fafc', textAlign: 'center' }}>Стоимость</button>
+            <button onClick={() => scrollToSection('format')} className="block w-full rounded-xl px-3 py-2.5 hover:bg-white/10" style={{ color: '#f8fafc', textAlign: 'center' }}>Как проходит обучение</button>
+            <button onClick={() => scrollToSection('about')} className="block w-full rounded-xl px-3 py-2.5 hover:bg-white/10" style={{ color: '#f8fafc', textAlign: 'center' }}>Кто ведёт занятия</button>
+            <button onClick={() => scrollToSection('catalog')} className="block w-full rounded-xl px-3 py-2.5 hover:bg-white/10" style={{ color: '#f8fafc', textAlign: 'center' }}>Каталог фильмов</button>
+            <button onClick={() => scrollToSection('pricing')} className="block w-full rounded-xl px-3 py-2.5 hover:bg-white/10" style={{ color: '#f8fafc', textAlign: 'center' }}>Форматы и стоимость</button>
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
