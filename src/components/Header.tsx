@@ -88,7 +88,7 @@ export function Header() {
           onClick={() => setBookingOpen(false)}
         >
           <div
-            className="bg-gradient-to-br from-[#1a2347] to-[#0f1629] rounded-3xl w-full my-auto border border-white/20 shadow-2xl relative"
+            className="bg-gradient-to-br from-[#1a2347] to-[#0f1629] rounded-3xl w-full my-auto border border-white/20 shadow-2xl relative text-white"
             style={{ maxWidth: '650px' }}
             onClick={(event) => event.stopPropagation()}
             role="dialog"
@@ -119,9 +119,9 @@ export function Header() {
                 </li>
                 <li className="flex items-center gap-3">
                   <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#ff6b9d] text-white flex items-center justify-center text-sm">3</span>
-                  <span className="flex flex-wrap items-center gap-2">
+                  <span>
                     Я отвечу на вопросы, уточню уровень и помогу выбрать подходящий вариант
-                    <Heart size={18} className="text-[#ff6b9d] fill-[#ff6b9d]" aria-hidden="true" />
+                    <Heart size={18} className="inline-block ml-2 align-middle text-[#ff6b9d] fill-[#ff6b9d]" aria-hidden="true" />
                   </span>
                 </li>
               </ol>
