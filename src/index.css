@@ -2353,6 +2353,14 @@ html {
   padding-bottom: 12px;
 }
 
+@media (max-width: 560px) {
+  .pricing-section-title {
+    font-size: 30px;
+    line-height: 1.2;
+    font-weight: 600;
+  }
+}
+
 .movies-faq {
   padding: 42px 24px 54px;
 }

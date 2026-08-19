@@ -27,7 +27,7 @@ export function Footer() {
 
           <div className="movies-footer__contacts">
             <h2>Контакты</h2>
-            <p>Выберите удобный мессенджер</p>
+            <p>Напишите мне удобным способом</p>
             <div className="movies-footer__socials" aria-label="Личные контакты">
               <a className="movies-footer__social movies-footer__social--vk" href="https://vk.ru/dinaraeng" target="_blank" rel="noopener noreferrer" aria-label="Написать ВКонтакте">
                 <img src={vkIcon} alt="" />

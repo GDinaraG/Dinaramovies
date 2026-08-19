@@ -26,7 +26,7 @@ export function PricingSection() {
     <>
     <section id="pricing" className="py-12 px-6">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-center mb-12">Форматы и стоимость</h2>
+        <h2 className="pricing-section-title text-center mb-12">Форматы и стоимость</h2>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {/* Group */}
@@ -244,7 +244,7 @@ export function PricingSection() {
 
     {selectedFormat && (
       <div
-        className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-6 overflow-y-auto"
+        className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto"
         onClick={() => setSelectedFormat(null)}
       >
         <div
@@ -255,34 +255,39 @@ export function PricingSection() {
           <button
             type="button"
             onClick={() => setSelectedFormat(null)}
-            className="absolute top-4 right-4 p-2 hover:bg-white/10 rounded-full transition-colors"
+            className="absolute top-3 right-3 p-2 hover:bg-white/10 rounded-full transition-colors"
             aria-label="Закрыть"
           >
             <X size={24} />
           </button>
 
-          <div className="p-6 pt-14 space-y-6">
+          <div className="p-5 sm:p-6 space-y-6" style={{ paddingTop: '64px' }}>
             <ol
               className="space-y-3"
               style={{
                 width: 'fit-content',
-                maxWidth: 'calc(100% - 32px)',
+                maxWidth: '100%',
                 margin: '0 auto'
               }}
             >
-              <li className="flex items-center gap-3">
-                <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#ff6b9d] text-white flex items-center justify-center text-sm">1</span>
+              <li className="flex items-start gap-3">
+                <span className="mt-0.5 flex-shrink-0 w-7 h-7 rounded-full bg-[#ff6b9d] text-white flex items-center justify-center text-sm">1</span>
                 <span>Выберите удобный мессенджер</span>
               </li>
-              <li className="flex items-center gap-3">
-                <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#ff6b9d] text-white flex items-center justify-center text-sm">2</span>
+              <li className="flex items-start gap-3">
+                <span className="mt-0.5 flex-shrink-0 w-7 h-7 rounded-full bg-[#ff6b9d] text-white flex items-center justify-center text-sm">2</span>
                 <span>Напишите название фильма или сериала</span>
               </li>
-              <li className="flex items-center gap-3">
-                <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#ff6b9d] text-white flex items-center justify-center text-sm">3</span>
-                <span className="flex flex-wrap items-center gap-2">
+              <li className="flex items-start gap-3">
+                <span className="mt-0.5 flex-shrink-0 w-7 h-7 rounded-full bg-[#ff6b9d] text-white flex items-center justify-center text-sm">3</span>
+                <span>
                   Я отвечу на вопросы и уточню детали
-                  <Heart size={18} className="text-[#ff6b9d] fill-[#ff6b9d]" aria-hidden="true" />
+                  <Heart
+                    size={18}
+                    className="inline-block text-[#ff6b9d] fill-[#ff6b9d]"
+                    style={{ marginLeft: '10px', verticalAlign: '-3px' }}
+                    aria-hidden="true"
+                  />
                 </span>
               </li>
             </ol>
