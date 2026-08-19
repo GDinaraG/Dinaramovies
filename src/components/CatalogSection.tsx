@@ -583,7 +583,9 @@ export function CatalogSection() {
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="mt-0.5 flex-shrink-0 w-7 h-7 rounded-full bg-[#ff6b9d] text-white flex items-center justify-center text-sm">2</span>
-                    <span>Напишите название: «{selectedItem.titleRu}»</span>
+                    <span>
+                      Напишите название: «{selectedItem.titleRu.replace(/\s*\(Сезон\s+\d+\)\s*$/i, '')}»
+                    </span>
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="mt-0.5 flex-shrink-0 w-7 h-7 rounded-full bg-[#ff6b9d] text-white flex items-center justify-center text-sm">3</span>
