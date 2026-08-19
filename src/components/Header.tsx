@@ -35,7 +35,7 @@ export function Header() {
         scrolled ? 'bg-[#0a0e27]/90 backdrop-blur-md shadow-lg' : 'bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <a 
@@ -94,7 +94,7 @@ export function Header() {
         </div>
 
         {mobileMenuOpen && (
-          <nav className="lg:hidden mt-3 rounded-2xl border border-white/15 bg-[#111936]/95 p-3 shadow-2xl backdrop-blur-md">
+          <nav className="absolute right-4 sm:right-6 top-full z-50 w-64 rounded-2xl border border-white/15 bg-[#111936]/95 p-3 shadow-2xl backdrop-blur-md lg:hidden">
             <button onClick={() => scrollToSection('format')} className="block w-full rounded-xl px-4 py-3 text-left text-gray-200 hover:bg-white/10">О формате</button>
             <button onClick={() => scrollToSection('about')} className="block w-full rounded-xl px-4 py-3 text-left text-gray-200 hover:bg-white/10">Обо мне</button>
             <button onClick={() => scrollToSection('catalog')} className="block w-full rounded-xl px-4 py-3 text-left text-gray-200 hover:bg-white/10">Фильмы</button>
