@@ -93,13 +93,14 @@ export function Header() {
           </button>
         </div>
 
-        {mobileMenuOpen && (
+        {mobileMenuOpen && createPortal(
           <nav
-            className="absolute right-4 sm:right-6 top-full z-50 w-64 overflow-hidden rounded-2xl border border-white/15 p-3 shadow-2xl lg:hidden"
+            className="fixed right-4 sm:right-6 z-50 w-64 overflow-hidden rounded-2xl border border-white/15 p-3 shadow-2xl lg:hidden"
             style={{
-              backgroundColor: 'rgba(15, 22, 50, 0.98)',
-              backdropFilter: 'blur(18px)',
-              WebkitBackdropFilter: 'blur(18px)',
+              top: '72px',
+              backgroundColor: 'rgba(15, 22, 50, 0.76)',
+              backdropFilter: 'blur(20px) saturate(130%)',
+              WebkitBackdropFilter: 'blur(20px) saturate(130%)',
               isolation: 'isolate'
             }}
           >
@@ -116,7 +117,8 @@ export function Header() {
             >
               Записаться
             </button>
-          </nav>
+          </nav>,
+          document.body
         )}
       </div>
 
