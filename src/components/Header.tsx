@@ -109,19 +109,24 @@ export function Header() {
                 className="space-y-3"
                 style={{ width: 'fit-content', maxWidth: 'calc(100% - 32px)', margin: '0 auto' }}
               >
-                <li className="flex items-center gap-3">
-                  <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#ff6b9d] text-white flex items-center justify-center text-sm">1</span>
+                <li className="flex items-start gap-3">
+                  <span className="mt-0.5 flex-shrink-0 w-7 h-7 rounded-full bg-[#ff6b9d] text-white flex items-center justify-center text-sm">1</span>
                   <span>Выберите удобный мессенджер</span>
                 </li>
-                <li className="flex items-center gap-3">
-                  <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#ff6b9d] text-white flex items-center justify-center text-sm">2</span>
+                <li className="flex items-start gap-3">
+                  <span className="mt-0.5 flex-shrink-0 w-7 h-7 rounded-full bg-[#ff6b9d] text-white flex items-center justify-center text-sm">2</span>
                   <span>Напишите название фильма или желаемый формат</span>
                 </li>
-                <li className="flex items-center gap-3">
-                  <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#ff6b9d] text-white flex items-center justify-center text-sm">3</span>
+                <li className="flex items-start gap-3">
+                  <span className="mt-0.5 flex-shrink-0 w-7 h-7 rounded-full bg-[#ff6b9d] text-white flex items-center justify-center text-sm">3</span>
                   <span>
                     Я отвечу на вопросы, уточню уровень и помогу выбрать подходящий вариант
-                    <Heart size={18} className="inline-block ml-2 align-middle text-[#ff6b9d] fill-[#ff6b9d]" aria-hidden="true" />
+                    <Heart
+                      size={18}
+                      className="inline-block text-[#ff6b9d] fill-[#ff6b9d]"
+                      style={{ marginLeft: '10px', verticalAlign: '-3px' }}
+                      aria-hidden="true"
+                    />
                   </span>
                 </li>
               </ol>
