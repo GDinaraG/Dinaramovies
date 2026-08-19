@@ -85,6 +85,7 @@ export function Header() {
             type="button"
             onClick={() => setMobileMenuOpen((open) => !open)}
             className="lg:hidden inline-flex h-11 flex-shrink-0 items-center justify-center gap-2 rounded-full border border-[#ff8fab] bg-gradient-to-r from-[#ff5f98] to-[#ff82aa] px-4 text-sm font-semibold text-white shadow-lg shadow-pink-500/30"
+            style={{ color: '#ffffff', background: 'linear-gradient(90deg, #ff5f98 0%, #ff82aa 100%)' }}
             aria-expanded={mobileMenuOpen}
             aria-label={mobileMenuOpen ? 'Закрыть меню' : 'Открыть меню'}
           >
@@ -95,25 +96,29 @@ export function Header() {
 
         {mobileMenuOpen && createPortal(
           <nav
-            className="fixed right-4 sm:right-6 z-50 w-64 overflow-hidden rounded-2xl border border-white/15 p-3 shadow-2xl lg:hidden"
+            className="fixed z-50 overflow-hidden rounded-2xl border border-white/15 p-3 shadow-2xl lg:hidden"
             style={{
               top: '72px',
-              backgroundColor: 'rgba(15, 22, 50, 0.76)',
+              right: '16px',
+              width: 'min(240px, calc(100vw - 32px))',
+              color: '#f8fafc',
+              backgroundColor: 'rgba(15, 22, 50, 0.72)',
               backdropFilter: 'blur(20px) saturate(130%)',
               WebkitBackdropFilter: 'blur(20px) saturate(130%)',
               isolation: 'isolate'
             }}
           >
-            <button onClick={() => scrollToSection('format')} className="block w-full rounded-xl px-4 py-3 text-left text-gray-200 hover:bg-white/10">О формате</button>
-            <button onClick={() => scrollToSection('about')} className="block w-full rounded-xl px-4 py-3 text-left text-gray-200 hover:bg-white/10">Обо мне</button>
-            <button onClick={() => scrollToSection('catalog')} className="block w-full rounded-xl px-4 py-3 text-left text-gray-200 hover:bg-white/10">Фильмы</button>
-            <button onClick={() => scrollToSection('pricing')} className="block w-full rounded-xl px-4 py-3 text-left text-gray-200 hover:bg-white/10">Стоимость</button>
+            <button onClick={() => scrollToSection('format')} className="block w-full rounded-xl px-4 py-3 hover:bg-white/10" style={{ color: '#f8fafc', textAlign: 'left' }}>О формате</button>
+            <button onClick={() => scrollToSection('about')} className="block w-full rounded-xl px-4 py-3 hover:bg-white/10" style={{ color: '#f8fafc', textAlign: 'left' }}>Обо мне</button>
+            <button onClick={() => scrollToSection('catalog')} className="block w-full rounded-xl px-4 py-3 hover:bg-white/10" style={{ color: '#f8fafc', textAlign: 'left' }}>Фильмы</button>
+            <button onClick={() => scrollToSection('pricing')} className="block w-full rounded-xl px-4 py-3 hover:bg-white/10" style={{ color: '#f8fafc', textAlign: 'left' }}>Стоимость</button>
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
                 setBookingOpen(true);
               }}
               className="mx-auto mt-2 flex w-fit min-w-36 justify-center rounded-full bg-gradient-to-r from-[#ff6b9d] to-[#ff8fab] px-6 py-3 font-medium text-white"
+              style={{ color: '#ffffff', background: 'linear-gradient(90deg, #ff6b9d 0%, #ff8fab 100%)' }}
             >
               Записаться
             </button>
