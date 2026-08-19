@@ -6,7 +6,7 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [bookingOpen, setBookingOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [mobileMenuPosition, setMobileMenuPosition] = useState({ top: 72, right: 16 });
+  const [mobileMenuPosition, setMobileMenuPosition] = useState({ top: 72, left: 16 });
   const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -25,9 +25,14 @@ export function Header() {
       if (!button) return;
 
       const rect = button.getBoundingClientRect();
+      const menuWidth = Math.min(220, window.innerWidth - 24);
+      const centeredLeft = rect.left + rect.width / 2 - menuWidth / 2;
       setMobileMenuPosition({
         top: rect.bottom + 8,
-        right: Math.max(12, window.innerWidth - rect.right)
+        left: Math.min(
+          window.innerWidth - menuWidth - 12,
+          Math.max(12, centeredLeft)
+        )
       });
     };
 
@@ -118,11 +123,11 @@ export function Header() {
 
         {mobileMenuOpen && createPortal(
           <nav
-            className="fixed z-50 overflow-hidden rounded-2xl border border-white/15 p-3 shadow-2xl lg:hidden"
+            className="fixed z-50 overflow-hidden rounded-2xl border border-white/15 p-2 shadow-2xl lg:hidden"
             style={{
               top: `${mobileMenuPosition.top}px`,
-              right: `${mobileMenuPosition.right}px`,
-              width: 'min(240px, calc(100vw - 32px))',
+              left: `${mobileMenuPosition.left}px`,
+              width: 'min(220px, calc(100vw - 24px))',
               color: '#f8fafc',
               backgroundColor: 'rgba(15, 22, 50, 0.42)',
               backdropFilter: 'blur(24px) saturate(145%)',
@@ -130,16 +135,16 @@ export function Header() {
               isolation: 'isolate'
             }}
           >
-            <button onClick={() => scrollToSection('format')} className="block w-full rounded-xl px-4 py-3 hover:bg-white/10" style={{ color: '#f8fafc', textAlign: 'center' }}>О формате</button>
-            <button onClick={() => scrollToSection('about')} className="block w-full rounded-xl px-4 py-3 hover:bg-white/10" style={{ color: '#f8fafc', textAlign: 'center' }}>Обо мне</button>
-            <button onClick={() => scrollToSection('catalog')} className="block w-full rounded-xl px-4 py-3 hover:bg-white/10" style={{ color: '#f8fafc', textAlign: 'center' }}>Фильмы</button>
-            <button onClick={() => scrollToSection('pricing')} className="block w-full rounded-xl px-4 py-3 hover:bg-white/10" style={{ color: '#f8fafc', textAlign: 'center' }}>Стоимость</button>
+            <button onClick={() => scrollToSection('format')} className="block w-full rounded-xl px-3 py-2.5 hover:bg-white/10" style={{ color: '#f8fafc', textAlign: 'center' }}>О формате</button>
+            <button onClick={() => scrollToSection('about')} className="block w-full rounded-xl px-3 py-2.5 hover:bg-white/10" style={{ color: '#f8fafc', textAlign: 'center' }}>Обо мне</button>
+            <button onClick={() => scrollToSection('catalog')} className="block w-full rounded-xl px-3 py-2.5 hover:bg-white/10" style={{ color: '#f8fafc', textAlign: 'center' }}>Фильмы</button>
+            <button onClick={() => scrollToSection('pricing')} className="block w-full rounded-xl px-3 py-2.5 hover:bg-white/10" style={{ color: '#f8fafc', textAlign: 'center' }}>Стоимость</button>
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
                 setBookingOpen(true);
               }}
-              className="mx-auto mt-2 flex w-fit min-w-36 justify-center rounded-full bg-gradient-to-r from-[#ff6b9d] to-[#ff8fab] px-6 py-3 font-medium text-white"
+              className="mx-auto mt-1.5 flex w-fit min-w-36 justify-center rounded-full bg-gradient-to-r from-[#ff6b9d] to-[#ff8fab] px-6 py-2.5 font-medium text-white"
               style={{ color: '#ffffff', background: 'linear-gradient(90deg, #ff6b9d 0%, #ff8fab 100%)' }}
             >
               Записаться
