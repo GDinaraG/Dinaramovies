@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
-import { ArrowUpRight, ChevronLeft, Heart, Menu, MessageCircle, MessageSquare, Send, X } from 'lucide-react';
+import { ArrowUpRight, ChevronLeft, Menu, MessageCircle, MessageSquare, Send, X } from 'lucide-react';
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -194,12 +194,6 @@ export function Header() {
                   <span className="mt-0.5 flex-shrink-0 w-7 h-7 rounded-full bg-[#ff6b9d] text-white flex items-center justify-center text-sm">3</span>
                   <span>
                     Я отвечу на вопросы, уточню уровень и помогу выбрать подходящий вариант
-                    <Heart
-                      size={18}
-                      className="inline-block text-[#ff6b9d] fill-[#ff6b9d]"
-                      style={{ marginLeft: '10px', verticalAlign: '-3px' }}
-                      aria-hidden="true"
-                    />
                   </span>
                 </li>
               </ol>
