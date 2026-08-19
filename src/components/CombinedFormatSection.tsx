@@ -1,28 +1,28 @@
 import React from 'react';
-import { Film, MessageCircle, Heart, Sparkles, Users, TrendingUp } from 'lucide-react';
+import { Film, Captions, MessageCircle, Sparkles, Users, TrendingUp } from 'lucide-react';
 
 export function CombinedFormatSection() {
   const formats = [
     {
       icon: Film,
-      title: 'Английский как в кино',
-      description: 'Учите язык через эмоции и истории. Запоминайте фразы в контексте реальных сцен, а не через скучные учебники.',
-      accent: '#ffd700',
-      pill: 'Solo или с наставником'
+      title: 'Выбираете фильм или сериал',
+      description: 'Подбираем историю по возрасту, уровню и интересам.',
+      pill: 'Материалы уже готовы',
+      accent: '#ffd700'
+    },
+    {
+      icon: Captions,
+      title: 'Разбираете живой английский',
+      description: 'Смотрите эпизоды, работаете с лексикой, пониманием речи и грамматикой в контексте.',
+      pill: 'Со мной или в своём темпе',
+      accent: '#ff6b9d'
     },
     {
       icon: MessageCircle,
-      title: 'Максимум практики',
-      description: 'Говорите с первых минут. Повторяйте диалоги, отвечайте на вопросы, обсуждайте сюжет — всё это развивает разговорные навыки.',
-      accent: '#ff6b9d',
-      pill: 'Онлайн в Zoom • 50–60 минут'
-    },
-    {
-      icon: Heart,
-      title: 'Фокус на уверенности',
-      description: 'Цель — не зубрить грамматику, а научиться говорить свободно и понимать живую речь без страха и напряжения.',
-      accent: '#9f7aea',
-      pill: 'Курсы и интенсивы'
+      title: 'Закрепляете в практике',
+      description: 'Выполняете задания, отвечаете на вопросы и используете новые фразы в речи.',
+      pill: 'Самостоятельно или с преподавателем',
+      accent: '#9f7aea'
     }
   ];
 
@@ -42,7 +42,7 @@ export function CombinedFormatSection() {
     {
       icon: Users,
       title: 'Любители историй и сериалов',
-      description: 'Которые любят кино и хотят совместить приятное с полезным — смотреть и одновременно прокачивать английский.',
+      description: 'Кто хочет заниматься английским регулярно, но быстро теряет мотивацию на стандартных темах и упражнениях.',
       emoji: '🎬'
     }
   ];
@@ -51,10 +51,10 @@ export function CombinedFormatSection() {
     <section id="format" className="py-12 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-12">
-          {/* О формате занятий */}
+          {/* Как проходит обучение */}
           <div>
             <div className="mb-8">
-              <h2 className="mb-2">О формате занятий</h2>
+              <h2 className="mb-2">Как проходит обучение</h2>
               <div className="h-1 w-12 bg-gradient-to-r from-[#ffd700] to-transparent rounded-full"></div>
             </div>
             
@@ -79,7 +79,7 @@ export function CombinedFormatSection() {
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-2 flex-wrap">
                           <h4>{format.title}</h4>
-                          <span className="inline-block text-xs text-gray-400 bg-white/5 px-3 py-1 rounded-full border border-white/10">
+                          <span className="text-xs text-gray-400 bg-white/5 px-3 py-1 rounded-full border border-white/10">
                             {format.pill}
                           </span>
                         </div>
@@ -92,10 +92,10 @@ export function CombinedFormatSection() {
             </div>
           </div>
 
-          {/* Для кого эти занятия */}
+          {/* Кому подойдёт этот формат */}
           <div id="forwho">
             <div className="mb-8">
-              <h2 className="mb-2">Для кого эти занятия</h2>
+              <h2 className="mb-2">Кому подойдёт этот формат</h2>
               <div className="h-1 w-12 bg-gradient-to-r from-[#ff6b9d] to-transparent rounded-full"></div>
             </div>
             

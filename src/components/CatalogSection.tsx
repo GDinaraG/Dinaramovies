@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Play, Clock, BarChart3, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
+import { X, Play, Clock, BarChart3, Sparkles, ChevronLeft, ChevronRight, Send, MessageCircle, MessageSquare, Heart, SlidersHorizontal, Check } from 'lucide-react';
 import { ImageCarousel } from './ImageCarousel';
 import insideOut2Poster from '../assets/0f307264768885e16d5ab8cb0e8f03a2a63bc820.png';
 import insideOut2Image1 from '../assets/7514af2591455042492ca6c1a5d6612c8415bd27.png';
@@ -77,8 +77,13 @@ interface CatalogItem {
   selfStudyAvailable?: boolean;
 }
 
+type CatalogFilter = 'Все' | 'Фильмы' | 'Сериалы' | 'Самостоятельное прохождение' | 'Интенсивы';
+
 export function CatalogSection() {
   const [selectedItem, setSelectedItem] = useState<CatalogItem | null>(null);
+  const [activeFilter, setActiveFilter] = useState<CatalogFilter>('Все');
+  const [filtersOpen, setFiltersOpen] = useState(false);
+  const [showContactOptions, setShowContactOptions] = useState(false);
 
   // Image collections for each catalog item
   const catalogImages: { [key: string]: string[] } = {
@@ -314,18 +319,31 @@ export function CatalogSection() {
     }
   };
 
+  const filters: CatalogFilter[] = ['Все', 'Фильмы', 'Сериалы', 'Самостоятельное прохождение', 'Интенсивы'];
+
+  const filteredItems = catalogItems.filter((item) => {
+    if (activeFilter === 'Все') return true;
+    if (activeFilter === 'Фильмы') return item.format === 'Фильм';
+    if (activeFilter === 'Сериалы') return item.format === 'Сериал';
+    if (activeFilter === 'Самостоятельное прохождение') {
+      return item.selfStudyAvailable === true && item.format !== 'Интенсив';
+    }
+    return item.format === 'Интенсив';
+  });
+
   const handleNavigate = (direction: 'prev' | 'next') => {
-    const currentIndex = catalogItems.findIndex(item => item.title === selectedItem?.title);
+    const currentIndex = filteredItems.findIndex(item => item.title === selectedItem?.title);
     if (currentIndex === -1) return;
 
     let newIndex;
     if (direction === 'prev') {
-      newIndex = currentIndex > 0 ? currentIndex - 1 : catalogItems.length - 1;
+      newIndex = currentIndex > 0 ? currentIndex - 1 : filteredItems.length - 1;
     } else {
-      newIndex = currentIndex < catalogItems.length - 1 ? currentIndex + 1 : 0;
+      newIndex = currentIndex < filteredItems.length - 1 ? currentIndex + 1 : 0;
     }
-    
-    setSelectedItem(catalogItems[newIndex]);
+
+    setShowContactOptions(false);
+    setSelectedItem(filteredItems[newIndex]);
   };
 
   return (
@@ -335,13 +353,66 @@ export function CatalogSection() {
           <div className="text-center mb-12">
             <div className="inline-block bg-gradient-to-r from-[#ff6b9d]/20 to-[#ffd700]/20 rounded-2xl px-8 py-4 border border-[#ff6b9d]/30 shadow-lg shadow-pink-500/20">
               <h2 className="text-xl md:text-2xl mb-0 bg-gradient-to-r from-[#ff6b9d] to-[#ffd700] bg-clip-text text-transparent">
-                Каталог занятий
+                Каталог фильмов и сериалов
               </h2>
             </div>
           </div>
 
+          <div
+            className="relative"
+            style={{ marginTop: '-10px', marginBottom: '24px' }}
+          >
+            <button
+              type="button"
+              onClick={() => setFiltersOpen((open) => !open)}
+              aria-expanded={filtersOpen}
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-[#ff6b9d]/40 bg-[#ff6b9d]/10 text-white hover:bg-[#ff6b9d]/20 hover:shadow-lg hover:shadow-pink-500/20 transition-all"
+            >
+              <SlidersHorizontal size={19} className="text-[#ff6b9d]" />
+              <span>{activeFilter === 'Все' ? 'Фильтры' : `Фильтры: ${activeFilter}`}</span>
+            </button>
+
+            {filtersOpen && (
+              <div
+                className="absolute left-0 border border-white/15"
+                style={{
+                  top: 'calc(100% + 10px)',
+                  width: '330px',
+                  maxWidth: 'calc(100vw - 48px)',
+                  padding: '8px',
+                  borderRadius: '16px',
+                  backgroundColor: '#18213f',
+                  boxShadow: '0 20px 45px rgba(0, 0, 0, 0.45)',
+                  zIndex: 100
+                }}
+              >
+                {filters.map((filter) => (
+                  <button
+                    key={filter}
+                    type="button"
+                    onClick={() => {
+                      setActiveFilter(filter);
+                      setFiltersOpen(false);
+                    }}
+                    className="w-full flex items-center justify-between gap-3 text-left transition-all"
+                    style={{
+                      minHeight: '46px',
+                      padding: '10px 14px',
+                      borderRadius: '12px',
+                      backgroundColor: activeFilter === filter ? 'rgba(255, 107, 157, 0.18)' : 'transparent',
+                      color: activeFilter === filter ? '#ffffff' : '#d1d5db'
+                    }}
+                  >
+                    <span>{filter}</span>
+                    {activeFilter === filter && <Check size={18} className="text-[#ff6b9d]" />}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {catalogItems.map((item, index) => {
+            {filteredItems.map((item, index) => {
               const colors = getFormatColor(item.format);
               return (
                 <div
@@ -379,10 +450,15 @@ export function CatalogSection() {
                       </div>
                       {item.selfStudyAvailable && (
                         <span 
-                          className="text-xs bg-[#c084fc]/20 text-[#c084fc] px-2.5 py-1 rounded-full border border-[#c084fc]/50 shadow-[0_0_10px_rgba(192,132,252,0.3)] whitespace-nowrap" 
-                          style={{ textShadow: '0 0 8px rgba(192, 132, 252, 0.6)' }}
+                          className="text-xs bg-[#c084fc]/20 text-[#c084fc] px-3 py-1.5 rounded-xl border border-[#c084fc]/50 shadow-[0_0_10px_rgba(192,132,252,0.3)]"
+                          style={{
+                            minWidth: '112px',
+                            textAlign: 'center',
+                            lineHeight: 1.25,
+                            textShadow: '0 0 8px rgba(192, 132, 252, 0.6)'
+                          }}
                         >
-                          + готовый курс
+                          Можно пройти<br />самостоятельно
                         </span>
                       )}
                     </div>
@@ -420,21 +496,29 @@ export function CatalogSection() {
       {selectedItem && (
         <div
           className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-6 overflow-y-auto"
-          onClick={() => setSelectedItem(null)}
+          onClick={() => {
+            setSelectedItem(null);
+            setShowContactOptions(false);
+          }}
         >
           <div
             className="bg-gradient-to-br from-[#1a2347] to-[#0f1629] rounded-3xl max-w-2xl w-full my-auto border border-white/20 shadow-2xl relative"
+            style={{ maxWidth: showContactOptions ? '620px' : undefined }}
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
             <button
-              onClick={() => setSelectedItem(null)}
+              onClick={() => {
+                setSelectedItem(null);
+                setShowContactOptions(false);
+              }}
               className="absolute top-4 right-4 p-2 hover:bg-white/10 rounded-full transition-colors z-10"
             >
               <X size={24} />
             </button>
 
             {/* Content */}
+            {!showContactOptions ? (
             <div className="p-6 space-y-6">
               {/* Detailed Info */}
               {selectedItem.detailedInfo && (
@@ -462,27 +546,97 @@ export function CatalogSection() {
                   className="flex items-center gap-1.5 text-sm text-[#ff6b9d] bg-[#ff6b9d]/10 px-3 py-1.5 rounded-full border border-[#ff6b9d]/30 hover:bg-[#ff6b9d]/20 transition-all"
                 >
                   <ChevronLeft size={14} />
-                  <span>Предыдущий</span>
+                  <span>Предыдущий фильм</span>
                 </button>
                 <button
                   onClick={() => handleNavigate('next')}
                   className="flex items-center gap-1.5 text-sm text-[#ff6b9d] bg-[#ff6b9d]/10 px-3 py-1.5 rounded-full border border-[#ff6b9d]/30 hover:bg-[#ff6b9d]/20 transition-all"
                 >
-                  <span>Следующий</span>
+                  <span>Следующий фильм</span>
                   <ChevronRight size={14} />
                 </button>
               </div>
 
               {/* CTA Button */}
-              <a 
-                href="#contact" 
-                onClick={() => setSelectedItem(null)}
+              <button
+                type="button"
+                onClick={() => setShowContactOptions(true)}
                 className="w-full bg-gradient-to-r from-[#ff6b9d] to-[#ff8fab] hover:from-[#ff5a8f] hover:to-[#ff7a9d] text-white py-4 px-6 rounded-xl transition-all duration-300 shadow-lg hover:shadow-pink-500/50 flex items-center justify-center gap-2 group"
               >
                 <span className="text-lg">Хочу смотреть!</span>
                 <Play size={20} className="group-hover:translate-x-1 transition-transform" />
-              </a>
+              </button>
             </div>
+            ) : (
+              <div className="p-6 pt-14 space-y-6">
+                <ol
+                  className="space-y-3"
+                  style={{
+                    width: 'fit-content',
+                    maxWidth: 'calc(100% - 32px)',
+                    margin: '0 auto'
+                  }}
+                >
+                  <li className="flex items-center gap-3">
+                    <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#ff6b9d] text-white flex items-center justify-center text-sm">1</span>
+                    <span>Выберите удобный мессенджер</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#ff6b9d] text-white flex items-center justify-center text-sm">2</span>
+                    <span>Напишите название: «{selectedItem.titleRu}»</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#ff6b9d] text-white flex items-center justify-center text-sm">3</span>
+                    <span className="flex flex-wrap items-center gap-2">
+                      Я помогу выбрать формат и отвечу на вопросы
+                      <Heart size={18} className="text-[#ff6b9d] fill-[#ff6b9d]" aria-hidden="true" />
+                    </span>
+                  </li>
+                </ol>
+
+                <div className="flex flex-wrap justify-center gap-3" style={{ paddingTop: '20px' }}>
+                  <a
+                    href="https://t.me/DinaraEng"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-white hover:scale-105 hover:shadow-lg transition-all"
+                    style={{ backgroundColor: '#2AABEE' }}
+                  >
+                    <Send size={20} />
+                    <span>Telegram</span>
+                  </a>
+                  <a
+                    href="https://vk.com/dinaraeng"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-white hover:scale-105 hover:shadow-lg transition-all"
+                    style={{ backgroundColor: '#2787F5' }}
+                  >
+                    <MessageCircle size={20} />
+                    <span>ВКонтакте</span>
+                  </a>
+                  <a
+                    href="https://max.ru/u/f9LHodD0cOLhbGCH7SAovsVCzNCspvleqRZ9MPJCpqZjgELEYNfkRENbaXw"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-white hover:scale-105 hover:shadow-lg transition-all"
+                    style={{ backgroundColor: '#A855F7' }}
+                  >
+                    <MessageSquare size={20} />
+                    <span>Макс</span>
+                  </a>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => setShowContactOptions(false)}
+                  className="mx-auto flex items-center gap-1.5 text-sm text-[#ff6b9d] bg-[#ff6b9d]/10 px-4 py-2 rounded-full border border-[#ff6b9d]/30 hover:bg-[#ff6b9d]/20 transition-all"
+                >
+                  <ChevronLeft size={14} />
+                  <span>Назад</span>
+                </button>
+              </div>
+            )}
           </div>
         </div>
       )}
