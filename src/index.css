@@ -2200,6 +2200,15 @@ html {
   }
 }
 
+@media (max-width: 767px) {
+  .scroll-reveal,
+  .scroll-reveal.scroll-reveal--visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 .movies-about {
   padding: 28px 24px;
 }

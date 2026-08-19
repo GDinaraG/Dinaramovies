@@ -14,8 +14,9 @@ export default function App() {
     document.querySelector('main > section:first-child')?.classList.remove('scroll-reveal', 'scroll-reveal--visible');
     document.querySelector('.movies-footer')?.classList.remove('scroll-reveal', 'scroll-reveal--visible');
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const mobileLayout = window.matchMedia('(max-width: 767px)').matches;
 
-    if (reduceMotion || !('IntersectionObserver' in window)) {
+    if (reduceMotion || mobileLayout || !('IntersectionObserver' in window)) {
       sections.forEach((section) => section.classList.add('scroll-reveal--visible'));
       return;
     }

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { ArrowUpRight, ChevronLeft, Heart, MessageCircle, MessageSquare, Send, X } from 'lucide-react';
+import { ArrowUpRight, ChevronLeft, Heart, Menu, MessageCircle, MessageSquare, Send, X } from 'lucide-react';
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [bookingOpen, setBookingOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,6 +16,7 @@ export function Header() {
   }, []);
 
   const scrollToSection = (id: string) => {
+    setMobileMenuOpen(false);
     const element = document.getElementById(id);
     if (element) {
       const offset = 100;
@@ -33,21 +35,21 @@ export function Header() {
         scrolled ? 'bg-[#0a0e27]/90 backdrop-blur-md shadow-lg' : 'bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <a 
             href="https://dinara-english.ru/" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex flex-col group"
+            className="flex min-w-0 flex-col group"
           >
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5 sm:gap-2 whitespace-nowrap text-xs sm:text-base">
               <span className="text-green-400 tracking-wide underline decoration-green-400/50 decoration-1 underline-offset-4">DINARA ENGLISH</span>
               <span className="text-[#ffd700]">•</span>
               <span className="text-[#ffd700]">ФИЛЬМЫ</span>
             </div>
-            <div className="flex items-center gap-1.5 mt-0.5">
+            <div className="flex items-center gap-1.5 mt-0.5 text-sm sm:text-base">
               <span className="text-white group-hover:opacity-80 transition-opacity" style={{ fontFamily: "'Caveat', cursive" }}>
                 Ваш Репетитор
               </span>
@@ -74,16 +76,44 @@ export function Header() {
           {/* CTA Button */}
           <button 
             onClick={() => setBookingOpen(true)}
-            className="px-6 py-2.5 rounded-full bg-gradient-to-r from-[#ff6b9d] to-[#ff8fab] hover:shadow-lg hover:shadow-pink-500/50 transition-all duration-300"
+            className="hidden lg:block px-6 py-2.5 rounded-full bg-gradient-to-r from-[#ff6b9d] to-[#ff8fab] hover:shadow-lg hover:shadow-pink-500/50 transition-all duration-300"
           >
             Записаться
           </button>
+
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen((open) => !open)}
+            className="lg:hidden inline-flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white"
+            aria-expanded={mobileMenuOpen}
+            aria-label={mobileMenuOpen ? 'Закрыть меню' : 'Открыть меню'}
+          >
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={26} />}
+          </button>
         </div>
+
+        {mobileMenuOpen && (
+          <nav className="lg:hidden mt-3 rounded-2xl border border-white/15 bg-[#111936]/95 p-3 shadow-2xl backdrop-blur-md">
+            <button onClick={() => scrollToSection('format')} className="block w-full rounded-xl px-4 py-3 text-left text-gray-200 hover:bg-white/10">О формате</button>
+            <button onClick={() => scrollToSection('about')} className="block w-full rounded-xl px-4 py-3 text-left text-gray-200 hover:bg-white/10">Обо мне</button>
+            <button onClick={() => scrollToSection('catalog')} className="block w-full rounded-xl px-4 py-3 text-left text-gray-200 hover:bg-white/10">Фильмы</button>
+            <button onClick={() => scrollToSection('pricing')} className="block w-full rounded-xl px-4 py-3 text-left text-gray-200 hover:bg-white/10">Стоимость</button>
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                setBookingOpen(true);
+              }}
+              className="mt-2 w-full rounded-full bg-gradient-to-r from-[#ff6b9d] to-[#ff8fab] px-5 py-3 font-medium text-white"
+            >
+              Записаться
+            </button>
+          </nav>
+        )}
       </div>
 
       {bookingOpen && createPortal(
         <div
-          className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center p-6 overflow-y-auto"
+          className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 overflow-y-auto"
           style={{ zIndex: 80 }}
           onClick={() => setBookingOpen(false)}
         >
@@ -98,16 +128,16 @@ export function Header() {
             <button
               type="button"
               onClick={() => setBookingOpen(false)}
-              className="absolute top-4 right-4 p-2 hover:bg-white/10 rounded-full transition-colors"
+              className="absolute top-3 right-3 p-2 hover:bg-white/10 rounded-full transition-colors"
               aria-label="Закрыть"
             >
               <X size={24} />
             </button>
 
-            <div className="p-6 pt-14 space-y-6">
+            <div className="p-5 sm:p-6 space-y-6" style={{ paddingTop: '64px' }}>
               <ol
                 className="space-y-3"
-                style={{ width: 'fit-content', maxWidth: 'calc(100% - 32px)', margin: '0 auto' }}
+                style={{ width: 'fit-content', maxWidth: '100%', margin: '0 auto' }}
               >
                 <li className="flex items-start gap-3">
                   <span className="mt-0.5 flex-shrink-0 w-7 h-7 rounded-full bg-[#ff6b9d] text-white flex items-center justify-center text-sm">1</span>
