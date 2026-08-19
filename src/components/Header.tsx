@@ -84,7 +84,7 @@ export function Header() {
           <button
             type="button"
             onClick={() => setMobileMenuOpen((open) => !open)}
-            className="lg:hidden inline-flex h-11 flex-shrink-0 items-center justify-center gap-2 rounded-full border border-[#ff6b9d]/50 bg-[#ff6b9d]/10 px-4 text-sm font-medium text-white shadow-lg shadow-pink-500/10"
+            className="lg:hidden inline-flex h-11 flex-shrink-0 items-center justify-center gap-2 rounded-full border border-[#ff8fab] bg-gradient-to-r from-[#ff5f98] to-[#ff82aa] px-4 text-sm font-semibold text-white shadow-lg shadow-pink-500/30"
             aria-expanded={mobileMenuOpen}
             aria-label={mobileMenuOpen ? 'Закрыть меню' : 'Открыть меню'}
           >
@@ -94,7 +94,15 @@ export function Header() {
         </div>
 
         {mobileMenuOpen && (
-          <nav className="absolute right-4 sm:right-6 top-full z-50 w-64 rounded-2xl border border-white/15 bg-[#111936]/95 p-3 shadow-2xl backdrop-blur-md lg:hidden">
+          <nav
+            className="absolute right-4 sm:right-6 top-full z-50 w-64 overflow-hidden rounded-2xl border border-white/15 p-3 shadow-2xl lg:hidden"
+            style={{
+              backgroundColor: 'rgba(15, 22, 50, 0.98)',
+              backdropFilter: 'blur(18px)',
+              WebkitBackdropFilter: 'blur(18px)',
+              isolation: 'isolate'
+            }}
+          >
             <button onClick={() => scrollToSection('format')} className="block w-full rounded-xl px-4 py-3 text-left text-gray-200 hover:bg-white/10">О формате</button>
             <button onClick={() => scrollToSection('about')} className="block w-full rounded-xl px-4 py-3 text-left text-gray-200 hover:bg-white/10">Обо мне</button>
             <button onClick={() => scrollToSection('catalog')} className="block w-full rounded-xl px-4 py-3 text-left text-gray-200 hover:bg-white/10">Фильмы</button>
@@ -104,7 +112,7 @@ export function Header() {
                 setMobileMenuOpen(false);
                 setBookingOpen(true);
               }}
-              className="mt-2 w-full rounded-full bg-gradient-to-r from-[#ff6b9d] to-[#ff8fab] px-5 py-3 font-medium text-white"
+              className="mx-auto mt-2 flex w-fit min-w-36 justify-center rounded-full bg-gradient-to-r from-[#ff6b9d] to-[#ff8fab] px-6 py-3 font-medium text-white"
             >
               Записаться
             </button>
