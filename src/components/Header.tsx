@@ -84,11 +84,12 @@ export function Header() {
           <button
             type="button"
             onClick={() => setMobileMenuOpen((open) => !open)}
-            className="lg:hidden inline-flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white"
+            className="lg:hidden inline-flex h-11 flex-shrink-0 items-center justify-center gap-2 rounded-full border border-[#ff6b9d]/50 bg-[#ff6b9d]/10 px-4 text-sm font-medium text-white shadow-lg shadow-pink-500/10"
             aria-expanded={mobileMenuOpen}
             aria-label={mobileMenuOpen ? 'Закрыть меню' : 'Открыть меню'}
           >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={26} />}
+            {mobileMenuOpen ? <X size={20} /> : <Menu size={21} />}
+            <span>{mobileMenuOpen ? 'Закрыть' : 'Меню'}</span>
           </button>
         </div>
 
