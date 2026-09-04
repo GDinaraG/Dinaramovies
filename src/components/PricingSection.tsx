@@ -127,7 +127,7 @@ export function PricingSection() {
             <div className="mb-6 pb-6 border-b border-white/10">
               <div className="flex items-baseline gap-3">
                 <div className="flex items-baseline gap-2">
-                  <span className="text-4xl text-white">{discountActive ? '1600' : '2000'}</span>
+                  <span className="text-4xl text-white">1600</span>
                   <span className="text-xl text-gray-400">₽</span>
                 </div>
                 {discountActive && (
