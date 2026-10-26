@@ -27,6 +27,9 @@ import silverpointImage3 from '../assets/caf377c651b79138326cb8a94b17acca509e795
 import sulphurSpringsSeason1Image1 from '../assets/sulphur-springs-season-1-sample-1.jpg';
 import sulphurSpringsSeason1Image2 from '../assets/sulphur-springs-season-1-sample-2.png';
 import sulphurSpringsSeason1Image3 from '../assets/sulphur-springs-season-1-sample-3.png';
+import sulphurSpringsSeason2Image1 from '../assets/sulphur-springs-season-2-sample-1.png';
+import sulphurSpringsSeason2Image2 from '../assets/sulphur-springs-season-2-sample-2.png';
+import sulphurSpringsSeason2Image3 from '../assets/sulphur-springs-season-2-sample-3.png';
 import gravityFallsImage1 from '../assets/ae6028665af44290fcc9f296ab480b2681be88c1.png';
 import gravityFallsImage2 from '../assets/fa88721b4f555fb7c8358958abfb260c058df22a.png';
 import gravityFallsImage3 from '../assets/38cb7421b2eef3fc9f62f983fc4439c89cf33a09.png';
@@ -53,6 +56,7 @@ import vanityFairImage2 from '../assets/30c395e6430969f4b0012a8d8d22fbb7ea737112
 import vanityFairImage3 from '../assets/13c087aeef06b6ce2e57b271ce47dfe6d5dd4c7c.png';
 import silverpointPoster from '../assets/b20222c4b1e1077f58c91f08f2dae2dffb537c4f.png';
 import sulphurSpringsSeason1Poster from '../assets/sulphur-springs-season-1-poster.jpg';
+import sulphurSpringsSeason2Poster from '../assets/sulphur-springs-season-2-poster.jpg';
 import walkingDeadPoster from '../assets/75c7a442c28ec0c782aaa02399e0fbb8f3602585.png';
 import benedictPoster from '../assets/372ba824431b9780cc5516ceb81a212a69d43564.png';
 import gravityFallsPoster from '../assets/275c84899f75200e3bdb740d189e6091e98f43f0.png';
@@ -94,6 +98,7 @@ export function CatalogSection() {
     'Inside Out 2': [insideOut2Image1, insideOut2Image2, insideOut2Image3],
     'Silverpoint (Season 1)': [silverpointImage1, silverpointImage2, silverpointImage3], // Готово к добавлению изображений
     'Secrets of Sulphur Springs (Season 1)': [sulphurSpringsSeason1Image1, sulphurSpringsSeason1Image2, sulphurSpringsSeason1Image3],
+    'Secrets of Sulphur Springs (Season 2)': [sulphurSpringsSeason2Image1, sulphurSpringsSeason2Image2, sulphurSpringsSeason2Image3],
     'The Walking Dead': [walkingDeadImage1, walkingDeadImage2, walkingDeadImage3], // Готово к добавлению изображений
     'The Mysterious Benedict Society': [benedictImage1, benedictImage2, benedictImage3],
     'Wednesday 2': [wednesday2Image1, wednesday2Image2, wednesday2Image3],
@@ -157,6 +162,7 @@ export function CatalogSection() {
       description: 'Новые путешествия во времени и тайны семьи Харпер',
       lessons: 'Сезон 2',
       genres: ['Мистика', 'Приключения', 'Семейный'],
+      poster: sulphurSpringsSeason2Poster,
       detailedInfo: 'Харпер пытается раскрыть тайны своей семьи и её давнюю связь с отелем «Тремонт». Вместе с Гриффином она отправляется в прошлое, где новое расследование превращается в опасное приключение и может навсегда изменить их дружбу.',
       topics: ['Семейная история', 'Тайны старого отеля', 'Путешествия во времени', 'Дружба'],
       selfStudyAvailable: true
