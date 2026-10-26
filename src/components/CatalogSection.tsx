@@ -132,6 +132,30 @@ export function CatalogSection() {
       selfStudyAvailable: true
     },
     {
+      level: 'A2–B1',
+      format: 'Сериал',
+      title: 'Secrets of Sulphur Springs (Season 1)',
+      titleRu: 'Тайны Салфер-Спрингс (Сезон 1)',
+      description: 'Таинственный отель, исчезновение девочки и путешествия во времени',
+      lessons: 'Сезон 1',
+      genres: ['Мистика', 'Приключения', 'Семейный'],
+      detailedInfo: 'Гриффин вместе с семьёй переезжает в старый отель «Тремонт», который жители города считают населённым призраками. Вместе с новой подругой Харпер он начинает расследовать исчезновение девочки по имени Саванна и обнаруживает тайный портал, ведущий в прошлое.',
+      topics: ['Знакомство и семья', 'Тайны старого отеля', 'Путешествия во времени', 'Дружба'],
+      selfStudyAvailable: true
+    },
+    {
+      level: 'A2–B1',
+      format: 'Сериал',
+      title: 'Secrets of Sulphur Springs (Season 2)',
+      titleRu: 'Тайны Салфер-Спрингс (Сезон 2)',
+      description: 'Новые путешествия во времени и тайны семьи Харпер',
+      lessons: 'Сезон 2',
+      genres: ['Мистика', 'Приключения', 'Семейный'],
+      detailedInfo: 'Харпер пытается раскрыть тайны своей семьи и её давнюю связь с отелем «Тремонт». Вместе с Гриффином она отправляется в прошлое, где новое расследование превращается в опасное приключение и может навсегда изменить их дружбу.',
+      topics: ['Семейная история', 'Тайны старого отеля', 'Путешествия во времени', 'Дружба'],
+      selfStudyAvailable: true
+    },
+    {
       level: 'B1–B2',
       format: 'Сериал',
       title: 'The Walking Dead',
@@ -435,6 +459,11 @@ export function CatalogSection() {
                         }`}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0f1629]/90 via-[#0f1629]/20 to-transparent"></div>
+                    </div>
+                  )}
+                  {!item.poster && (
+                    <div className="h-48 flex items-center justify-center bg-gradient-to-br from-[#27335f] via-[#1a2347] to-[#301d4b] px-8 text-center">
+                      <span className="text-sm text-white/55">Изображение добавим позже</span>
                     </div>
                   )}
                   

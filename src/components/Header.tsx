@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { ArrowUpRight, ChevronLeft, Menu, MessageCircle, MessageSquare, Send, X } from 'lucide-react';
 
@@ -17,7 +17,7 @@ export function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!mobileMenuOpen) return;
 
     const positionMenu = () => {
@@ -112,7 +112,7 @@ export function Header() {
             type="button"
             onClick={() => setMobileMenuOpen((open) => !open)}
             className="lg:hidden inline-flex h-11 flex-shrink-0 items-center justify-center gap-2 rounded-full border border-[#ff8fab] bg-gradient-to-r from-[#ff5f98] to-[#ff82aa] px-4 text-sm font-semibold text-white shadow-lg shadow-pink-500/30"
-            style={{ color: '#ffffff', background: 'linear-gradient(90deg, #ff5f98 0%, #ff82aa 100%)' }}
+            style={{ width: '112px', color: '#ffffff', background: 'linear-gradient(90deg, #ff5f98 0%, #ff82aa 100%)' }}
             aria-expanded={mobileMenuOpen}
             aria-label={mobileMenuOpen ? 'Закрыть меню' : 'Открыть меню'}
           >
