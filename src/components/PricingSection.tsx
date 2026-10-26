@@ -51,6 +51,7 @@ export function PricingSection() {
                   <span className="text-4xl text-white">1200</span>
                   <span className="text-xl text-gray-400">₽</span>
                 </div>
+                <span className="text-lg text-gray-500 line-through whitespace-nowrap">1500 ₽</span>
               </div>
               <p className="text-sm text-gray-400 mt-2">с человека</p>
             </div>
@@ -127,15 +128,10 @@ export function PricingSection() {
             <div className="mb-6 pb-6 border-b border-white/10">
               <div className="flex items-baseline gap-3">
                 <div className="flex items-baseline gap-2">
-                  <span className="text-4xl text-white">1600</span>
+                  <span className="text-4xl text-white">1500</span>
                   <span className="text-xl text-gray-400">₽</span>
                 </div>
-                {discountActive && (
-                  <div className="flex items-center gap-2">
-                    <span className="text-lg text-gray-500 line-through">2000</span>
-                    <span className="text-xs text-red-400">специальная цена</span>
-                  </div>
-                )}
+                <span className="text-lg text-gray-500 line-through whitespace-nowrap">1800 ₽</span>
               </div>
               {discountActive && (
                 <div
@@ -207,6 +203,7 @@ export function PricingSection() {
                   <span className="text-4xl text-white">3499</span>
                   <span className="text-xl text-gray-400">₽</span>
                 </div>
+                <span className="text-lg text-gray-500 line-through whitespace-nowrap">5499 ₽</span>
               </div>
             </div>
             
