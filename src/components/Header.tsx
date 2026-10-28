@@ -106,7 +106,7 @@ export function Header() {
           {/* CTA Button */}
           <button 
             onClick={() => setBookingOpen(true)}
-            className="hidden lg:block px-6 py-2.5 rounded-full bg-gradient-to-r from-[#ff6b9d] to-[#ff8fab] hover:shadow-lg hover:shadow-pink-500/50 transition-all duration-300"
+            className="hidden lg:block px-5 py-2 rounded-full bg-gradient-to-r from-[#ff6b9d] to-[#ff8fab] hover:shadow-lg hover:shadow-pink-500/50 transition-all duration-300"
           >
             Записаться
           </button>
@@ -158,7 +158,7 @@ export function Header() {
                 setMobileMenuOpen(false);
                 setBookingOpen(true);
               }}
-              className="mx-auto mt-1.5 flex w-fit min-w-36 justify-center rounded-full bg-gradient-to-r from-[#ff6b9d] to-[#ff8fab] px-6 py-2.5 font-medium text-white"
+              className="mx-auto mt-1.5 flex w-fit min-w-28 justify-center rounded-full bg-gradient-to-r from-[#ff6b9d] to-[#ff8fab] px-4 py-2 font-medium text-white"
               style={{ color: '#ffffff', background: 'linear-gradient(90deg, #ff6b9d 0%, #ff8fab 100%)' }}
             >
               Записаться
