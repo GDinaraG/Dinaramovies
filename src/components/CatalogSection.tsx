@@ -69,6 +69,10 @@ import vanityFairPoster from '../assets/04d81068d9cb83f695aeb8f814809e5edb445fd9
 import intensiveA2B1Poster from '../assets/233e5e91e3632645cb844cb9ce140633fbbc672e.png';
 import intensiveA1A2Poster from '../assets/a9181221ee682f1cc4631562f904cfb6562cca74.png';
 import intensiveA1Poster from '../assets/d1ac489a35dac4cc76b8a15a53f34033593aa021.png';
+import goosebumps2Poster from '../assets/goosebumps-2-poster.jpg';
+import goosebumps2Image1 from '../assets/goosebumps-2-sample-1.png';
+import goosebumps2Image2 from '../assets/goosebumps-2-sample-2.png';
+import goosebumps2Image3 from '../assets/goosebumps-2-sample-3.png';
 
 interface CatalogItem {
   level: string;
@@ -96,6 +100,7 @@ export function CatalogSection() {
   // Image collections for each catalog item
   const catalogImages: { [key: string]: string[] } = {
     'Inside Out 2': [insideOut2Image1, insideOut2Image2, insideOut2Image3],
+    'Goosebumps 2: Haunted Halloween': [goosebumps2Image1, goosebumps2Image2, goosebumps2Image3],
     'Silverpoint (Season 1)': [silverpointImage1, silverpointImage2, silverpointImage3], // Готово к добавлению изображений
     'Secrets of Sulphur Springs (Season 1)': [sulphurSpringsSeason1Image1, sulphurSpringsSeason1Image2, sulphurSpringsSeason1Image3],
     'Secrets of Sulphur Springs (Season 2)': [sulphurSpringsSeason2Image1, sulphurSpringsSeason2Image2, sulphurSpringsSeason2Image3],
@@ -139,6 +144,19 @@ export function CatalogSection() {
       poster: silverpointPoster,
       detailedInfo: 'Четверо подростков приезжают в летний лагерь Сильверпойнт, где 15 лет назад пропали четверо других детей. Когда начинают происходить странные события, друзья понимают, что прошлое лагеря хранит темные секреты, и им предстоит разгадать эту загадку.',
       topics: ['Лагерь и отдых', 'Подростковая жизнь', 'Тайны и загадки', 'Дружба'],
+      selfStudyAvailable: true
+    },
+    {
+      level: 'A2–B1',
+      format: 'Фильм',
+      title: 'Goosebumps 2: Haunted Halloween',
+      titleRu: 'Ужастики 2: Беспокойный Хэллоуин',
+      description: 'Ожившие персонажи книги устраивают настоящий Хэллоуин',
+      lessons: 'Курс',
+      genres: ['Фэнтези', 'Комедия', 'Приключения'],
+      poster: goosebumps2Poster,
+      detailedInfo: 'Сонни и Сэм находят в заброшенном доме таинственную книгу и случайно выпускают на свободу куклу Слэппи. Вскоре хэллоуинские украшения оживают, и друзьям приходится спасать город от монстров, которых они сами выпустили.',
+      topics: ['Хэллоуин', 'Дружба', 'Страхи', 'Приключения'],
       selfStudyAvailable: true
     },
     {

@@ -5,6 +5,7 @@ import { CombinedFormatSection } from './components/CombinedFormatSection';
 import { AboutSection } from './components/AboutSection';
 import { CatalogSection } from './components/CatalogSection';
 import { PricingSection } from './components/PricingSection';
+import { BonusWheelSection } from './components/BonusWheelSection';
 import { FaqSection } from './components/FaqSection';
 import { Footer } from './components/Footer';
 
@@ -48,6 +49,7 @@ export default function App() {
         <AboutSection />
         <CatalogSection />
         <PricingSection />
+        <BonusWheelSection />
         <FaqSection />
       </main>
       
