@@ -2918,19 +2918,23 @@ html {
 .bonus-result__close {
   position: absolute;
   z-index: 20;
-  top: 14px;
-  right: 14px;
+  top: 10px;
+  right: 10px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(255, 107, 157, 0.38);
   border-radius: 50%;
-  color: #ffffff;
+  background: rgba(255, 107, 157, 0.12);
+  color: #ff8fab;
   transition: background 0.18s ease;
 }
 
-.bonus-result__close:hover { background: rgba(255, 255, 255, 0.09); }
+.bonus-result__close:hover { background: rgba(255, 107, 157, 0.22); }
+
+.movies-hero-title { font-size: clamp(2rem, 3vw, 2.75rem); }
 
 .bonus-result__icon {
   display: flex;
@@ -3235,19 +3239,21 @@ html {
 .ticket-modal-close {
   position: absolute;
   z-index: 20;
-  top: 14px;
-  right: 14px;
+  top: 10px;
+  right: 10px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(255, 107, 157, 0.38);
   border-radius: 50%;
-  color: #ffffff;
+  background: rgba(255, 107, 157, 0.12);
+  color: #ff8fab;
   transition: background 0.18s ease;
 }
 
-.ticket-modal-close:hover:not(:disabled) { background: rgba(255, 255, 255, 0.09); }
+.ticket-modal-close:hover:not(:disabled) { background: rgba(255, 107, 157, 0.22); }
 
 .ticket-picker__heading { text-align: center; }
 
@@ -3382,7 +3388,7 @@ html {
   text-align: center;
 }
 
-.ticket-result { padding-top: 28px; }
+.ticket-result { padding-top: 56px; }
 
 .ticket-result__ticket {
   position: relative;
@@ -3440,6 +3446,7 @@ html {
 }
 
 @media (max-width: 720px) {
+  .movies-hero-title { font-size: 1.65rem; }
   .cinema-bonus-tab {
     right: 12px;
     bottom: 18px;

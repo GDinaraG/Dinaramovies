@@ -36,8 +36,8 @@ export function HeroSection() {
               </div>
               
               <h1
-                className="text-white max-w-xl"
-                style={{ fontSize: 'clamp(2rem, 3vw, 2.75rem)', lineHeight: 1.18, fontWeight: 600, letterSpacing: '-0.025em' }}
+                className="movies-hero-title text-white max-w-xl"
+                style={{ lineHeight: 1.18, fontWeight: 600, letterSpacing: '-0.025em' }}
               >
                 Любимый фильм или сериал превращается в практику английского
               </h1>

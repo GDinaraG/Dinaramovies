@@ -22,7 +22,8 @@ type StoredBonus = {
 
 const STORAGE_KEY = 'dinara-movies-ticket-bonus-v4';
 const BONUS_LIFETIME = 7 * 24 * 60 * 60 * 1000;
-const PREVIEW_ALL_BONUSES = import.meta.env.DEV;
+const PREVIEW_ALL_BONUSES = import.meta.env.DEV
+  || (typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('bonus-preview') === '1');
 const ticketImages = [insideOutPoster, silverpointPoster, sulphurSpringsPoster, gravityFallsPoster, wednesdayPoster];
 
 const prizes: Prize[] = [
