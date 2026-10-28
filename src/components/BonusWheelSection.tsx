@@ -64,12 +64,37 @@ const prizes: Prize[] = [
 ];
 
 export function BonusWheelSection() {
-  const [pickerOpen, setPickerOpen] = useState(PREVIEW_ALL_BONUSES);
+  const [bonusVisible, setBonusVisible] = useState(false);
+  const [pickerOpen, setPickerOpen] = useState(false);
   const [resultOpen, setResultOpen] = useState(false);
   const [revealing, setRevealing] = useState(false);
   const [wonPrizeIndex, setWonPrizeIndex] = useState<number | null>(null);
   const [chosenTicket, setChosenTicket] = useState<number | null>(null);
   const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    const catalog = document.getElementById('catalog');
+    if (!catalog) return;
+
+    const revealAtCatalog = () => {
+      const catalogTop = catalog.getBoundingClientRect().top + window.scrollY;
+      const revealPoint = catalogTop - window.innerHeight * 0.55;
+      if (window.scrollY < revealPoint) return;
+
+      setBonusVisible(true);
+      window.removeEventListener('scroll', revealAtCatalog);
+      window.removeEventListener('resize', revealAtCatalog);
+    };
+
+    revealAtCatalog();
+    window.addEventListener('scroll', revealAtCatalog, { passive: true });
+    window.addEventListener('resize', revealAtCatalog);
+
+    return () => {
+      window.removeEventListener('scroll', revealAtCatalog);
+      window.removeEventListener('resize', revealAtCatalog);
+    };
+  }, []);
 
   useEffect(() => {
     if (PREVIEW_ALL_BONUSES) {
@@ -164,13 +189,15 @@ export function BonusWheelSection() {
 
   return (
     <>
-      <button type="button" className="cinema-bonus-tab" onClick={openBonus} aria-label="Получить бонус">
-        <span className="cinema-bonus-tab__icon"><Ticket size={23} /></span>
-        <span className="cinema-bonus-tab__copy">
-          <small>{wonPrize ? 'Ваш билет' : 'Счастливый билет'}</small>
-          <strong>{wonPrize ? 'Мой бонус' : 'Получить бонус'}</strong>
-        </span>
-      </button>
+      {bonusVisible && (
+        <button type="button" className="cinema-bonus-tab" onClick={openBonus} aria-label="Получить бонус">
+          <span className="cinema-bonus-tab__icon"><Ticket size={23} /></span>
+          <span className="cinema-bonus-tab__copy">
+            <small>{wonPrize ? 'Ваш билет' : 'Счастливый билет'}</small>
+            <strong>{wonPrize ? 'Мой бонус' : 'Получить бонус'}</strong>
+          </span>
+        </button>
+      )}
 
       {pickerOpen && createPortal(
         <div className="ticket-picker-backdrop" onClick={() => !revealing && setPickerOpen(false)}>

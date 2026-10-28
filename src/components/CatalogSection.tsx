@@ -147,7 +147,7 @@ export function CatalogSection() {
       selfStudyAvailable: true
     },
     {
-      level: 'A2–B1',
+      level: 'A1–A2',
       format: 'Фильм',
       title: 'Goosebumps 2: Haunted Halloween',
       titleRu: 'Ужастики 2: Беспокойный Хэллоуин',
