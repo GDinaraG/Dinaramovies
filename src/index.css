@@ -2917,6 +2917,7 @@ html {
 
 .bonus-result__close {
   position: absolute;
+  z-index: 20;
   top: 14px;
   right: 14px;
   display: inline-flex;
@@ -3233,7 +3234,7 @@ html {
 
 .ticket-modal-close {
   position: absolute;
-  z-index: 5;
+  z-index: 20;
   top: 14px;
   right: 14px;
   display: inline-flex;
@@ -3281,6 +3282,8 @@ html {
   margin-top: 28px;
   perspective: 900px;
 }
+
+.ticket-carousel-controls { display: none; }
 
 .vintage-ticket {
   position: relative;
@@ -3457,19 +3460,68 @@ html {
   .ticket-picker__heading p { font-size: 14px; }
 
   .ticket-deck {
-    grid-template-columns: repeat(5, 104px);
-    gap: 9px;
+    display: flex;
+    grid-template-columns: none;
+    gap: 13px;
     margin-inline: -16px;
-    padding: 8px 20px 15px;
+    padding: 10px 26px 18px;
     overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
     scroll-snap-type: x mandatory;
+    scroll-padding-inline: 26px;
+    -webkit-overflow-scrolling: touch;
   }
 
+  .ticket-deck::-webkit-scrollbar { display: none; }
+
   .vintage-ticket {
-    width: 104px;
-    height: 172px;
-    flex: 0 0 104px;
+    width: min(64vw, 220px);
+    height: 184px;
+    flex: 0 0 min(64vw, 220px);
     scroll-snap-align: center;
+  }
+
+  .ticket-carousel-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 4px;
+  }
+
+  .ticket-carousel-controls > button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(255, 107, 157, 0.42);
+    border-radius: 50%;
+    background: rgba(255, 107, 157, 0.1);
+    color: #ff8fab;
+  }
+
+  .ticket-carousel-controls > button:disabled { opacity: 0.3; }
+
+  .ticket-carousel-dots {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .ticket-carousel-dots button {
+    width: 7px;
+    height: 7px;
+    padding: 0;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.28);
+    transition: width 0.2s ease, background 0.2s ease;
+  }
+
+  .ticket-carousel-dots button.is-active {
+    width: 20px;
+    background: #ff6b9d;
   }
 
   .ticket-result__ticket { padding-left: 30px; }

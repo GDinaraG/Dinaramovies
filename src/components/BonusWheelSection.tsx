@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { Check, Clapperboard, Copy, Gift, MessageCircle, MessageSquare, Send, Ticket, X } from 'lucide-react';
+import { Check, ChevronLeft, ChevronRight, Clapperboard, Copy, Gift, MessageCircle, MessageSquare, Send, Ticket, X } from 'lucide-react';
 import insideOutPoster from '../assets/0f307264768885e16d5ab8cb0e8f03a2a63bc820.png';
 import silverpointPoster from '../assets/b20222c4b1e1077f58c91f08f2dae2dffb537c4f.png';
 import sulphurSpringsPoster from '../assets/sulphur-springs-season-1-poster.jpg';
@@ -71,6 +71,8 @@ export function BonusWheelSection() {
   const [wonPrizeIndex, setWonPrizeIndex] = useState<number | null>(null);
   const [chosenTicket, setChosenTicket] = useState<number | null>(null);
   const [copied, setCopied] = useState(false);
+  const [activeTicket, setActiveTicket] = useState(0);
+  const ticketDeckRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const catalog = document.getElementById('catalog');
@@ -187,6 +189,34 @@ export function BonusWheelSection() {
     }
   };
 
+  const goToTicket = (index: number) => {
+    const nextIndex = Math.max(0, Math.min(prizes.length - 1, index));
+    const ticket = ticketDeckRef.current?.children[nextIndex] as HTMLElement | undefined;
+    ticket?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    setActiveTicket(nextIndex);
+  };
+
+  const updateActiveTicket = () => {
+    const deck = ticketDeckRef.current;
+    if (!deck) return;
+
+    const deckCenter = deck.scrollLeft + deck.clientWidth / 2;
+    let closestIndex = 0;
+    let closestDistance = Number.POSITIVE_INFINITY;
+
+    Array.from(deck.children).forEach((child, index) => {
+      const ticket = child as HTMLElement;
+      const ticketCenter = ticket.offsetLeft + ticket.offsetWidth / 2;
+      const distance = Math.abs(ticketCenter - deckCenter);
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestIndex = index;
+      }
+    });
+
+    setActiveTicket(closestIndex);
+  };
+
   return (
     <>
       {bonusVisible && (
@@ -212,7 +242,7 @@ export function BonusWheelSection() {
               <p>За каждым билетом спрятан подарок. Какой достанется вам?</p>
             </div>
 
-            <div className="ticket-deck">
+            <div className="ticket-deck" ref={ticketDeckRef} onScroll={updateActiveTicket}>
               {prizes.map((_, index) => (
                 <button
                   type="button"
@@ -237,6 +267,27 @@ export function BonusWheelSection() {
                   </span>
                 </button>
               ))}
+            </div>
+
+            <div className="ticket-carousel-controls" aria-label="Переключение билетов">
+              <button type="button" onClick={() => goToTicket(activeTicket - 1)} disabled={activeTicket === 0} aria-label="Предыдущий билет">
+                <ChevronLeft size={20} />
+              </button>
+              <div className="ticket-carousel-dots">
+                {prizes.map((_, index) => (
+                  <button
+                    type="button"
+                    key={index}
+                    className={activeTicket === index ? 'is-active' : ''}
+                    onClick={() => goToTicket(index)}
+                    aria-label={`Показать билет ${index + 1}`}
+                    aria-current={activeTicket === index ? 'true' : undefined}
+                  />
+                ))}
+              </div>
+              <button type="button" onClick={() => goToTicket(activeTicket + 1)} disabled={activeTicket === prizes.length - 1} aria-label="Следующий билет">
+                <ChevronRight size={20} />
+              </button>
             </div>
 
             <p className="ticket-picker__note">Каждый билет выигрышный. Бонус действует 7 дней.</p>
