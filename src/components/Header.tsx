@@ -5,6 +5,7 @@ import { ArrowUpRight, ChevronLeft, Menu, MessageCircle, MessageSquare, Send, X 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [bookingOpen, setBookingOpen] = useState(false);
+  const [contactsOpen, setContactsOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileMenuPosition, setMobileMenuPosition] = useState({ top: 72, left: 16 });
   const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
@@ -97,6 +98,9 @@ export function Header() {
             <button onClick={() => scrollToSection('pricing')} className="text-sm text-gray-300 hover:text-white transition-colors">
               Стоимость
             </button>
+            <button onClick={() => setContactsOpen(true)} className="text-sm text-gray-300 hover:text-white transition-colors">
+              Контакты
+            </button>
           </nav>
 
           {/* CTA Button */}
@@ -142,6 +146,16 @@ export function Header() {
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
+                setContactsOpen(true);
+              }}
+              className="block w-full rounded-xl px-3 py-2.5 text-sm hover:bg-white/10"
+              style={{ color: '#f8fafc', textAlign: 'center' }}
+            >
+              Контакты
+            </button>
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
                 setBookingOpen(true);
               }}
               className="mx-auto mt-1.5 flex w-fit min-w-36 justify-center rounded-full bg-gradient-to-r from-[#ff6b9d] to-[#ff8fab] px-6 py-2.5 font-medium text-white"
@@ -153,6 +167,88 @@ export function Header() {
           document.body
         )}
       </div>
+
+      {contactsOpen && createPortal(
+        <div
+          className="fixed inset-0 flex items-center justify-center overflow-y-auto bg-black/70 p-3 backdrop-blur-sm sm:p-6"
+          style={{ zIndex: 80 }}
+          onClick={() => setContactsOpen(false)}
+        >
+          <div
+            className="relative my-auto w-full rounded-3xl border border-white/20 bg-gradient-to-br from-[#1a2347] to-[#0f1629] p-6 text-white shadow-2xl sm:p-8"
+            style={{ maxWidth: '484px' }}
+            onClick={(event) => event.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="contacts-title"
+          >
+            <button
+              type="button"
+              onClick={() => setContactsOpen(false)}
+              className="absolute right-3 top-3 rounded-full p-2 transition-colors hover:bg-white/10"
+              style={{ top: '12px', right: '12px' }}
+              aria-label="Закрыть"
+            >
+              <X size={24} />
+            </button>
+
+            <div className="text-center">
+              <h2 id="contacts-title" className="pr-8 text-2xl font-semibold sm:pr-0">
+                Контакты
+              </h2>
+            </div>
+
+            <div className="mt-6 space-y-6">
+              <div>
+                <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide text-[#ff8fab]">
+                  Написать мне
+                </h3>
+                <div className="contacts-list">
+                  <div className="contacts-row">
+                    <span className="contacts-service contacts-service--telegram"><Send size={18} />Telegram</span>
+                    <a href="https://t.me/DinaraEng" target="_blank" rel="noopener noreferrer" className="contacts-url contacts-url--telegram">t.me/DinaraEng</a>
+                    <a href="https://t.me/DinaraEng" target="_blank" rel="noopener noreferrer" className="contacts-action contacts-action--telegram">Написать</a>
+                  </div>
+                  <div className="contacts-row">
+                    <span className="contacts-service contacts-service--vk"><MessageCircle size={18} />ВКонтакте</span>
+                    <a href="https://vk.ru/dinaraeng" target="_blank" rel="noopener noreferrer" className="contacts-url contacts-url--vk">vk.ru/dinaraeng</a>
+                    <a href="https://vk.ru/dinaraeng" target="_blank" rel="noopener noreferrer" className="contacts-action contacts-action--vk">Написать</a>
+                  </div>
+                  <div className="contacts-row">
+                    <span className="contacts-service contacts-service--max"><MessageSquare size={18} />Макс</span>
+                    <a href="https://max.ru/u/f9LHodD0cOJBxAYv1kH4C_VktHo_U9FZgNO-Ip1Wbeiz_L7MdDSBsA9UL8k" target="_blank" rel="noopener noreferrer" className="contacts-url contacts-url--max">max.ru/u/f9LHodD0cO...</a>
+                    <a href="https://max.ru/u/f9LHodD0cOJBxAYv1kH4C_VktHo_U9FZgNO-Ip1Wbeiz_L7MdDSBsA9UL8k" target="_blank" rel="noopener noreferrer" className="contacts-action contacts-action--max">Написать</a>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide text-[#ff8fab]">
+                  Мои группы
+                </h3>
+                <div className="contacts-list">
+                  <div className="contacts-row contacts-row--group">
+                    <span className="contacts-service contacts-service--telegram"><Send size={18} />Telegram-канал</span>
+                    <a href="https://t.me/master_english_dinara" target="_blank" rel="noopener noreferrer" className="contacts-url contacts-url--telegram">t.me/master_english_dinara</a>
+                    <a href="https://t.me/master_english_dinara" target="_blank" rel="noopener noreferrer" className="contacts-action contacts-action--telegram">Перейти</a>
+                  </div>
+                  <div className="contacts-row contacts-row--group">
+                    <span className="contacts-service contacts-service--vk"><MessageCircle size={18} />ВКонтакте</span>
+                    <a href="https://vk.ru/dinaraenglish" target="_blank" rel="noopener noreferrer" className="contacts-url contacts-url--vk">vk.ru/dinaraenglish</a>
+                    <a href="https://vk.ru/dinaraenglish" target="_blank" rel="noopener noreferrer" className="contacts-action contacts-action--vk">Перейти</a>
+                  </div>
+                  <div className="contacts-row contacts-row--group">
+                    <span className="contacts-service contacts-service--max"><MessageSquare size={18} />Группа в Макс</span>
+                    <a href="https://max.ru/join/amdYRr2AkgdCYv_DiAkOsykqPY47a3EjAW4GFPcwtxE" target="_blank" rel="noopener noreferrer" className="contacts-url contacts-url--max">max.ru/join/amdYRr2A...</a>
+                    <a href="https://max.ru/join/amdYRr2AkgdCYv_DiAkOsykqPY47a3EjAW4GFPcwtxE" target="_blank" rel="noopener noreferrer" className="contacts-action contacts-action--max">Перейти</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>,
+        document.body
+      )}
 
       {bookingOpen && createPortal(
         <div
