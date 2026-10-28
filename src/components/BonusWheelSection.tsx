@@ -13,6 +13,7 @@ type Prize = {
   description: string;
   code: string;
   accent: string;
+  hideTicketTitle?: boolean;
 };
 
 type StoredBonus = {
@@ -53,7 +54,8 @@ const prizes: Prize[] = [
     ticketLabel: 'Секретный урок',
     description: 'Подарю доступ к небольшому уроку по фильму или сериалу, которого нет в каталоге.',
     code: 'СЕКРЕТНЫЙУРОК',
-    accent: '#f0bd32'
+    accent: '#f0bd32',
+    hideTicketTitle: true
   },
   {
     title: 'Урок из курса в подарок',
@@ -263,7 +265,11 @@ export function BonusWheelSection() {
                     <span className="vintage-ticket__face vintage-ticket__face--back">
                       <small>ВАШ БОНУС</small>
                       <strong>{chosenTicket === index && wonPrize ? wonPrize.ticketLabel : 'СЮРПРИЗ'}</strong>
-                      <span>{chosenTicket === index && wonPrize ? wonPrize.title : 'Счастливый билет'}</span>
+                      {chosenTicket === index && wonPrize ? (
+                        !wonPrize.hideTicketTitle && <span>{wonPrize.title}</span>
+                      ) : (
+                        <span>Счастливый билет</span>
+                      )}
                     </span>
                   </span>
                 </button>
