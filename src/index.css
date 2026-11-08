@@ -2936,11 +2936,6 @@ html {
 
 .movies-hero-title { font-size: clamp(2rem, 3vw, 2.75rem); }
 
-.movies-hero-eyebrow {
-  display: inline-flex;
-  white-space: nowrap;
-}
-
 .bonus-result__icon {
   display: flex;
   align-items: center;
@@ -3149,14 +3144,14 @@ html {
   color: #ffffff;
   box-shadow: -8px 12px 30px rgba(0, 0, 0, 0.34), 0 0 24px rgba(255, 107, 157, 0.15);
   cursor: pointer;
-  animation: cinema-bonus-arrive 0.95s 0.08s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: cinema-bonus-arrive 0.72s cubic-bezier(0.22, 1, 0.36, 1) both;
   transition: transform 0.22s ease, box-shadow 0.22s ease;
 }
 
 @keyframes cinema-bonus-arrive {
   from {
     opacity: 0;
-    transform: translateX(calc(100% + 24px)) scale(0.96);
+    transform: translateX(52px) scale(0.96);
   }
   to {
     opacity: 1;
@@ -3460,11 +3455,6 @@ html {
 
 @media (max-width: 720px) {
   .movies-hero-title { font-size: 1.65rem; }
-  .movies-hero-eyebrow {
-    padding-inline: 10px;
-    font-size: 10px;
-    letter-spacing: 0.045em;
-  }
   .cinema-bonus-tab {
     right: 12px;
     bottom: calc(88px + env(safe-area-inset-bottom, 0px));
