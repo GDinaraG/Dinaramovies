@@ -3207,6 +3207,8 @@ html {
   white-space: nowrap;
 }
 
+.cinema-bonus-tab__label--mobile { display: none; }
+
 .ticket-picker-backdrop {
   position: fixed;
   z-index: 100;
@@ -3460,7 +3462,9 @@ html {
   .cinema-bonus-tab::after { display: none; }
   .cinema-bonus-tab__icon { width: 40px; height: 40px; flex-basis: 40px; }
   .cinema-bonus-tab__copy small { display: none; }
-  .cinema-bonus-tab__copy strong { font-size: 13px; }
+  .cinema-bonus-tab__copy strong { margin-top: 0; font-size: 13px; }
+  .cinema-bonus-tab__label--desktop { display: none; }
+  .cinema-bonus-tab__label--mobile { display: inline; }
 
   .ticket-picker { padding: 30px 16px 23px; }
   .ticket-picker__heading { padding-inline: 24px; }
@@ -3536,8 +3540,9 @@ html {
 }
 
 @media (max-width: 390px) {
-  .cinema-bonus-tab__copy { display: none; }
-  .cinema-bonus-tab { padding: 8px; }
+  .cinema-bonus-tab { padding: 8px 10px; }
+  .cinema-bonus-tab__icon { width: 36px; height: 36px; flex-basis: 36px; }
+  .cinema-bonus-tab__copy strong { font-size: 12px; }
   .ticket-result__ticket { min-height: 105px; padding-right: 18px; }
   .ticket-result__ticket strong { font-size: 21px; }
 }

@@ -227,7 +227,14 @@ export function BonusWheelSection() {
           <span className="cinema-bonus-tab__icon"><Ticket size={23} /></span>
           <span className="cinema-bonus-tab__copy">
             <small>{wonPrize ? 'Ваш билет' : 'Счастливый билет'}</small>
-            <strong>{wonPrize ? 'Мой бонус' : 'Получить бонус'}</strong>
+            <strong>
+              <span className="cinema-bonus-tab__label cinema-bonus-tab__label--desktop">
+                {wonPrize ? 'Мой бонус' : 'Получить бонус'}
+              </span>
+              <span className="cinema-bonus-tab__label cinema-bonus-tab__label--mobile">
+                {wonPrize ? 'Мой бонус' : 'Вытянуть счастливый билет'}
+              </span>
+            </strong>
           </span>
         </button>
       )}
