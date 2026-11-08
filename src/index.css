@@ -2936,6 +2936,11 @@ html {
 
 .movies-hero-title { font-size: clamp(2rem, 3vw, 2.75rem); }
 
+.movies-hero-eyebrow {
+  display: inline-flex;
+  white-space: nowrap;
+}
+
 .bonus-result__icon {
   display: flex;
   align-items: center;
@@ -3455,6 +3460,18 @@ html {
 
 @media (max-width: 720px) {
   .movies-hero-title { font-size: 1.65rem; }
+  .movies-hero-eyebrow-wrap {
+    width: 75%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .movies-hero-eyebrow {
+    width: 100%;
+    justify-content: center;
+    padding: 6px 6px;
+    font-size: clamp(8px, 2.5vw, 10px);
+    letter-spacing: 0.02em;
+  }
   .cinema-bonus-tab {
     right: 12px;
     bottom: calc(88px + env(safe-area-inset-bottom, 0px));

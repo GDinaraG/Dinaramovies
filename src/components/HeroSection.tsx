@@ -26,9 +26,9 @@ export function HeroSection() {
 
             {/* Right Card - Text */}
             <div className="flex flex-col justify-center">
-              <div className="inline-block mb-6">
+              <div className="movies-hero-eyebrow-wrap inline-block mb-6">
                 <span
-                  className="text-xs uppercase tracking-wider px-4 py-1.5 rounded-full border"
+                  className="movies-hero-eyebrow text-xs uppercase tracking-wider px-4 py-1.5 rounded-full border"
                   style={{ color: '#ff8fab', backgroundColor: 'rgba(255, 107, 157, 0.08)', borderColor: 'rgba(255, 143, 171, 0.35)' }}
                 >
                   Английский через фильмы и сериалы
