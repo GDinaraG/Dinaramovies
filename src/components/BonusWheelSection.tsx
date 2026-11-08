@@ -81,24 +81,17 @@ export function BonusWheelSection() {
     const catalog = document.getElementById('catalog');
     if (!catalog) return;
 
-    const revealAtCatalog = () => {
-      const catalogTop = catalog.getBoundingClientRect().top + window.scrollY;
-      const revealPoint = catalogTop - window.innerHeight * 0.55;
-      if (window.scrollY < revealPoint) return;
-
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
       setBonusVisible(true);
-      window.removeEventListener('scroll', revealAtCatalog);
-      window.removeEventListener('resize', revealAtCatalog);
-    };
+      observer.disconnect();
+    }, {
+      threshold: 0.08,
+      rootMargin: '0px 0px -22% 0px'
+    });
 
-    revealAtCatalog();
-    window.addEventListener('scroll', revealAtCatalog, { passive: true });
-    window.addEventListener('resize', revealAtCatalog);
-
-    return () => {
-      window.removeEventListener('scroll', revealAtCatalog);
-      window.removeEventListener('resize', revealAtCatalog);
-    };
+    observer.observe(catalog);
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
