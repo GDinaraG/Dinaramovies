@@ -3451,7 +3451,7 @@ html {
   .movies-hero-title { font-size: 1.65rem; }
   .cinema-bonus-tab {
     right: 12px;
-    bottom: 18px;
+    bottom: calc(88px + env(safe-area-inset-bottom, 0px));
     min-width: 0;
     padding: 9px 11px;
     border-right: 1px solid rgba(255, 215, 94, 0.5);
